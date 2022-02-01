@@ -9,10 +9,15 @@ class Cars(models.Model):
 
     name = fields.Char()
     value = fields.Integer()
-    value2 = fields.Float(compute="_value_pc", store=True)
+    value2 = fields.Float()
     description = fields.Text()
 
-    @api.depends('value')
-    def _value_pc(self):
-        for record in self:
-            record.value2 = float(record.value) / 100
+    valueA = fields.Char('A')
+    valueB = fields.Char('B')
+    valueC = fields.Char('C')
+    valueD = fields.Char('D')
+
+    # @api.depends('value')
+    # def _value_pc(self):
+    #     for record in self:
+    #         record.value2 = float(record.value) / 100

@@ -1,52 +1,139 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
+	<data>
+		<!-- explicit list view definition -->
 
-    <record model="ir.ui.view" id="cars.list">
-      <field name="name">cars list</field>
-      <field name="model">cars.cars</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
+		<record model="ir.ui.view" id="cars.list">
+			<field name="name">cars list</field>
+			<field name="model">cars.cars</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="value"/>
+					<field name="value2"/>
+				</tree>
+			</field>
+		</record>
 
-    <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="cars.action_window">
-      <field name="name">cars window</field>
-      <field name="res_model">cars.cars</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+		<record model="ir.ui.view" id="cars_form">
+			<field name="name">cars form</field>
+			<field name="model">cars.cars</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<notebook>
+							<page string="Groups" id="groups">
+								<group string="Simple Grouping">
+									<!-- simple grouping puts one group after the other;
+									the first on the left the next on the right -->
+									<group string="group 1">
+										<field name="name"/>
+										<field name="value"/>
+									</group>
+									<group string="group 2">
+										<field name="value2"></field>
+									</group>
+									<group string="group 3">
+										<field name="valueA"></field>
+										<field name="valueB"></field>
+										<field name="valueC"></field>
+									</group>
+									<group string="group 4">
+										<field name="valueD"></field>
+									</group>
+								</group>
+							</page>
+							<page string="columns" id="col_groups">
+								<group string="Fixed Columns" col="3">
+									<!-- col defines row width of sub-groups; default:col=2 (2 fields in one row)
+									col=1 can be used as support group for easier left and right grouping.
+									max col=4 (total width 8, one field has width 2 (1 label, 1 field)
+																		-->
+									<group col="1" string="left col">
+										<group string="group 1">
+											<field name="name"/>
+											<field name="value"/>
+										</group>
+										<!--margin top, margin bottom, lots of padding everywhere -->
+										<group string="group 2" class="mb-0">
+											<field name="value2"></field>
+										</group>
+										<group string="group 3" class="mt-0">
+											<field name="valueA"></field>
+											<field name="valueB"></field>
+											<field name="valueC"></field>
+										</group>
+									</group>
+									<group col="1" string="center col">
+										<group string="group 4">
+											<field name="valueD"></field>
+										</group>
+									</group>
+									<group col="1" string="right col">
+										<group string="group 5">
+											<field name="description"></field>
+										</group>
+									</group>
+								</group>
+							</page>
+							<page string="read/edit" id="tabs">
+								<group string="Simple Grouping">
+									<!-- edit and read only groups,
+									groups position depends on currently drawn groups -->
+									<group string="group 1">
+										<field name="name"/>
+										<field name="value"/>
+									</group>
+									<group string="group 2 edit" class="oe_edit_only">
+										<field name="value2"></field>
+									</group>
+									<group string="group 3 read" class="oe_read_only">
+										<field name="valueA"></field>
+										<field name="valueB"></field>
+										<field name="valueC"></field>
+									</group>
+									<group string="group 4">
+										<field name="valueD"></field>
+									</group>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="cars.action_window">
+			<field name="name">cars window</field>
+			<field name="res_model">cars.cars</field>
+			<field name="view_mode">tree,form</field>
+		</record>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="cars.action_server">
-      <field name="name">cars server</field>
-      <field name="model_id" ref="model_cars_cars"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
+		<!-- server action to the one above -->
+		<!--
+			<record model="ir.actions.server" id="cars.action_server">
+			  <field name="name">cars server</field>
+			  <field name="model_id" ref="model_cars_cars"/>
+			  <field name="state">code</field>
+			  <field name="code">
+				action = {
+				  "type": "ir.actions.act_window",
+				  "view_mode": "tree,form",
+				  "res_model": model._name,
+				}
+			  </field>
+			</record>
+		-->
 
-    <!-- Top menu item -->
-    <menuitem name="cars" id="cars.menu_root"/>
-    <!-- menu categories -->
-    <menuitem name="Menu 1" id="cars.menu_1" parent="cars.menu_root"/>
-    <menuitem name="Menu 2" id="cars.menu_2" parent="cars.menu_root"/>
-    <!-- actions -->
-    <menuitem name="List" id="cars.menu_1_list" parent="cars.menu_1"
-              action="cars.action_window"/>
-<!--    <menuitem name="Server to list" id="cars" parent="cars.menu_2"
-              action="cars.action_server"/>
--->
-  </data>
+		<!-- Top menu item -->
+		<menuitem name="cars" id="cars.menu_root"/>
+		<!-- menu categories -->
+		<menuitem name="Menu 1" id="cars.menu_1" parent="cars.menu_root"/>
+		<menuitem name="Menu 2" id="cars.menu_2" parent="cars.menu_root"/>
+		<!-- actions -->
+		<menuitem name="List" id="cars.menu_1_list" parent="cars.menu_1"
+							action="cars.action_window"/>
+		<!--    <menuitem name="Server to list" id="cars" parent="cars.menu_2"
+					  action="cars.action_server"/>
+		-->
+	</data>
 </odoo>
