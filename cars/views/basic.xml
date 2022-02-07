@@ -75,8 +75,8 @@
 									</group>
 								</group>
 							</page>
-							<page string="read/edit" id="tabs">
-								<group string="Simple Grouping">
+							<page string="read/edit" id="read-edit">
+								<group string="Read/Edit only">
 									<!-- edit and read only groups,
 									groups position depends on currently drawn groups -->
 									<group string="group 1">
@@ -95,6 +95,9 @@
 										<field name="valueD"></field>
 									</group>
 								</group>
+							</page>
+							<page string="labels" id="labels">
+
 							</page>
 						</notebook>
 					</sheet>
