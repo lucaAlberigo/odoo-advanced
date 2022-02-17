@@ -5,7 +5,7 @@ from odoo import models, fields, api
 
 class Cars(models.Model):
     _name = 'cars.cars'
-    _description = 'cars.cars'
+    _description = 'cars'
     _rec_name = 'name'
 
     name = fields.Char()

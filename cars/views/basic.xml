@@ -2,7 +2,7 @@
 	<data>
 		<!-- explicit list view definition -->
 
-		<record model="ir.ui.view" id="cars.list">
+		<record model="ir.ui.view" id="cars_list">
 			<field name="name">cars list</field>
 			<field name="model">cars.cars</field>
 			<field name="arch" type="xml">
@@ -110,6 +110,11 @@
 			<field name="res_model">cars.cars</field>
 			<field name="view_mode">tree,form</field>
 		</record>
+		<record model="ir.actions.act_window" id="cars.part_window">
+			<field name="name">cars window</field>
+			<field name="res_model">cars.components</field>
+			<field name="view_mode">tree,form</field>
+		</record>
 
 		<!-- server action to the one above -->
 		<!--
@@ -130,11 +135,13 @@
 		<!-- Top menu item -->
 		<menuitem name="cars" id="cars.menu_root"/>
 		<!-- menu categories -->
-		<menuitem name="Menu 1" id="cars.menu_1" parent="cars.menu_root"/>
-		<menuitem name="Menu 2" id="cars.menu_2" parent="cars.menu_root"/>
+		<menuitem name="cars" id="cars.menu_1" parent="cars.menu_root"/>
+		<menuitem name="parts" id="cars.menu_2" parent="cars.menu_root"/>
 		<!-- actions -->
-		<menuitem name="List" id="cars.menu_1_list" parent="cars.menu_1"
+		<menuitem name="Cars" id="cars.menu_1_list" parent="cars.menu_1"
 							action="cars.action_window"/>
+		<menuitem name="Parts" id="cars.menu_2_list" parent="cars.menu_2"
+							action="cars.part_window"/>
 		<!--    <menuitem name="Server to list" id="cars" parent="cars.menu_2"
 					  action="cars.action_server"/>
 		-->

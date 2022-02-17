@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import basic
+from . import basic, components, relations

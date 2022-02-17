@@ -1,0 +1,43 @@
+<odoo>
+	<data>
+
+
+		<record model="ir.ui.view" id="cars_form_inherit">
+			<field name="name">cars form inherit</field>
+			<field name="model">cars.cars</field>
+			<field name="inherit_id" ref="cars_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+					<page string="Parts" id="parts">
+						<field name="parts" nolabel="1">
+							<tree>
+								<field name="part"/>
+								<field name="quantity"/>
+							</tree>
+						</field>
+					</page>
+				</xpath>
+
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cars_car_parts">
+			<field name="name">car parts</field>
+			<field name="model">cars.car_parts</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="part"/>
+							<field name="quantity"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+	</data>
+</odoo>
