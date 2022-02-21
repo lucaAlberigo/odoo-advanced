@@ -1,0 +1,96 @@
+<odoo>
+	<data>
+
+		<record model="ir.ui.view" id="cars_form_optionals_inherit">
+			<field name="name">cars form inherit</field>
+			<field name="model">cars.cars</field>
+			<field name="inherit_id" ref="cars_form"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="//notebook" position="inside">
+					<page string="Optionals" id="optionals">
+						<group>
+							<field name="filter" readonly="1" />
+							<field name="optional_package" options="{'no_open':True, 'no_create':True}"/>
+							<field name="paint" domain="[('filter','=',filter)]" options="{'no_open':True, 'no_create':True}"/>
+						</group>
+					</page>
+				</xpath>
+
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cars_form_paints">
+			<field name="name">paints</field>
+			<field name="model">cars.paints</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet><group>
+					<field name="color"/>
+					<field name="code"/>
+					<field name="price"/>
+					<field name="filter"/>
+					</group></sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cars_tree_paints">
+			<field name="name">paints</field>
+			<field name="model">cars.paints</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="color"/>
+					<field name="code"/>
+					<field name="price"/>
+					<field name="filter"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cars_form_packages">
+			<field name="name">optional packages</field>
+			<field name="model">cars.optionals</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="filter_code"/>
+							<field name="price"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="cars_tree_packages">
+			<field name="name">optional packages</field>
+			<field name="model">cars.optionals</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name"/>
+					<field name="filter_code"/>
+					<field name="price"/>
+				</tree>
+			</field>
+		</record>
+
+				<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="cars.paints_action_window">
+			<field name="name">cars paint</field>
+			<field name="res_model">cars.paints</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+				<record model="ir.actions.act_window" id="cars.optionals_action_window">
+			<field name="name">cars optionals</field>
+			<field name="res_model">cars.optionals</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem name="Paints" id="cars.menu_paints" parent="cars.menu_2"
+							action="cars.paints_action_window"/>
+		<menuitem name="Packages" id="cars.menu_packages" parent="cars.menu_2"
+							action="cars.optionals_action_window"/>
+
+	</data>
+</odoo>

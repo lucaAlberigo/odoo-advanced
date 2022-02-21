@@ -2,3 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_cars_cars,cars.cars,model_cars_cars,base.group_user,1,1,1,1
 access_cars_components,access_cars_components,model_cars_components,base.group_user,1,1,1,1
 access_cars_car_parts,access_cars_car_parts,model_cars_car_parts,base.group_user,1,1,1,1
+access_cars_paints,access_cars_paints,model_cars_paints,base.group_user,1,1,1,1
+access_cars_optionals,access_cars_optionals,model_cars_optionals,base.group_user,1,1,1,1
+access_cars_makers,access_cars_makers,model_cars_makers,base.group_user,1,1,1,1
