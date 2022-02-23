@@ -10,15 +10,63 @@
 				<xpath expr="//notebook" position="inside">
 					<page string="Parts" id="parts">
 						<field name="parts" nolabel="1">
-							<tree>
-								<field name="part"/>
-								<field name="quantity"/>
-							</tree>
+							<!--alternative inline definition, not suggested;
+							 you will have to do it every time if you use the same table in different views-->
+							<!--							<tree>-->
+							<!--								<field name="part"/>-->
+							<!--								<field name="quantity"/>-->
+							<!--							</tree>-->
+							<!--							<form>-->
+							<!--								<sheet>-->
+							<!--									<group>-->
+							<!--										<group>-->
+							<!--											<field name="part"/>-->
+							<!--										</group>-->
+							<!--										<group>-->
+							<!--											<field name="quantity"/>-->
+							<!--										</group>-->
+							<!--									</group>-->
+							<!--								</sheet>-->
+							<!--							</form>-->
 						</field>
 					</page>
 				</xpath>
 
 			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cars_parts_pick_form">
+			<field name="name">cars components</field>
+			<field name="model">cars.car_parts</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="part"/>
+							<field name="quantity"/>
+							<field name="color"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="cars_parts_pick_tree">
+			<field name="name">cars components</field>
+			<field name="model">cars.car_parts</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="part"/>
+					<field name="quantity"/>
+					<field name="color"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="cars.car_parts">
+			<field name="name">car parts</field>
+			<field name="res_model">cars.car_parts</field>
+			<field name="view_mode">tree,form</field>
 		</record>
 
 	</data>

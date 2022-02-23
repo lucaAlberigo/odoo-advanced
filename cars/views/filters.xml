@@ -12,6 +12,7 @@
 						<group>
 							<field name="filter" readonly="1" />
 							<field name="optional_package" options="{'no_open':True, 'no_create':True}"/>
+<!--							filter paints available based on the content of related field filter, from optional_package-->
 							<field name="paint" domain="[('filter','=',filter)]" options="{'no_open':True, 'no_create':True}"/>
 						</group>
 					</page>

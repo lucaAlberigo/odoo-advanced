@@ -6,10 +6,10 @@ from odoo import models, fields, api
 class Cars(models.Model):
     _inherit = 'cars.cars'
 
-    # one 2 many needs corresponding many2one field on the corresponding model
-    parts = fields.One2many('cars.car_parts', 'car')#model,
+    # one2many needs a corresponding many2one field on the corresponding model that loops back
+    parts = fields.One2many('cars.car_parts', 'car')
 
-    #make a filter using a mnay2one
+    #make a filter using a many2one
     # maker = fields.Many2one('Maker')
 
 
